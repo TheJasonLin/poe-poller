@@ -50,7 +50,8 @@ def get_next_update() -> str:
             item['stashName'] = stash_name
             rings.append(item)
 
-    REDIS.rpush(REDIS_RING_KEY, *rings)
+    if len(rings) > 0:
+        REDIS.rpush(REDIS_RING_KEY, *rings)
 
     return next_change_id
 
