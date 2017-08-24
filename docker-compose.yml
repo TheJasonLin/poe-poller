@@ -1,0 +1,14 @@
+version: '3'
+services:
+  poller:
+    build: .
+    ports:
+     - "5000:5000"
+    volumes:
+    - .:/code
+    environment:
+    - REDIS_HOST=redis
+  redis:
+    image: "redis:alpine"
+    ports:
+    - "6379:6379"
